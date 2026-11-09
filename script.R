@@ -56,7 +56,7 @@ ev_total <- M |> group_by(PY) |> summarise(n_total = n())
 ev <- exp_qexp |> group_by(PY) |> summarise(n = n()) |> 
   left_join(ev_total) |> mutate(prop = scales::percent(n/n_total, accuracy = 0.1))
 
-
+setwd(here("graficos"))
 
 ggplot(ev, aes(x = PY, y = n)) +
   geom_line() +
